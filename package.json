@@ -52,7 +52,7 @@
     "terser": "^4.8.0"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "prettier": "2.1.2"
   },
   "repository": {
     "type": "git",
