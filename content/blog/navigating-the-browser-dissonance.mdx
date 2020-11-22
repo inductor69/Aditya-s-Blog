@@ -1,0 +1,94 @@
+---
+title: Navigating the browser dissonance
+description: How the extinction of browser diverstity hinders the market incompetitive.
+date: 2020-08-10 
+featured: https://res.cloudinary.com/ernestoresende/image/upload/v1603304966/og%20cards/Navigating_the_browser_dissonance-min_aj5skq.jpg
+---
+
+We all hate browser inconsistency. It's frustrating, and forces us to double on the work of cross-browser compatibility if we want to make sure users are being presented with consistent content in different browsers.
+
+But how exactly did we get to this? 
+
+If we were to over-simplify the answer, it could nailed down to essentially how different *browser engines* render content to the screen, but in reality, it is far more complicated than that.
+
+<InformationSidenote title="Browser Engine?">  
+
+  <p className='last-line'>We usually refer to the browser engine as a group of engines responsible for presenting the content of a webpage. It's composed of a rendering engine and a JavaScript engine, the first one being the most tightly coupled with the browser engine, as the JS engine can be worked upon even without the presence of a browser.</p>
+
+</InformationSidenote>
+
+I want to discuss the impacts that a broad browser diversity has on development cycles that take heavy cross-browser support into account, and how trying to run away from it may lead us into a false paradise where everything tastes like Chromium.
+
+# Relics of a lost past
+
+If we go as early as the 90s on the history of the web, before Netscape even appeared on the web browsing industry as the first released commercial browser, It's possible to notice something curious regarding the rapid development of browser features that time. Quoting Jay Hoffmann's [article about Web History](https://css-tricks.com/chapter-2-browsers/):
+
+<Quote>
+
+"Occasionally, one of the browser makers would spontaneously release something that now feels essential. The first PDF rendering inside of a browser window was a part of the Midas browser. HTML tables were introduced and properly laid out in another called Arena. Tabbed browsing was a prominent feature in InternetWorks. All of these features were developed before 1995."
+
+</Quote>
+
+Most of these early 90's web browsers are now nothing more then relics of a lost past, but they where of extreme importance to lay out the first foundations of the web, as many of the people who worked on and contributed to these projects would later be contributing to the building of W3C web standards and important websites from the early web... Even if they didn't knew that back then.
+
+<BlogImages
+  webpLink="https://res.cloudinary.com/ernestoresende/image/upload/v1599279873/navigating-the-browser-dissonance/main-qimg-7bdd602c3d4e0e73d1c3bbbba6f70d67_ruytah.webp"
+  jpegLink="https://res.cloudinary.com/ernestoresende/image/upload/v1599279873/navigating-the-browser-dissonance/main-qimg-7bdd602c3d4e0e73d1c3bbbba6f70d67_ruytah.jpeg"
+  alt="InternetWorks, a browser from the early 90's that was the first to feature tabbed navigation."
+  figcaption="InternetWorks, from the early 90's, the first to feature tabbed navigation."
+/>
+
+Going a little further into that timeline, after the Netscape era, and taking a quick glance over the timeline of 2000s era of browsers, we could see something like this:
+
+- *2002* - Following Netscape's downfall, Internet Explorer gained massive market share, and had its development internalized to Microsoft's ecosystem.
+- *2003* - Apple starts shipping Safari as the default browser on macOS systems.
+- *2004* - The now open-sourced Netscape was turned into Mozilla Firefox.
+- *2008* - The first version of Chrome was launched, as Internet Explorer started losing traction to other browsers due to inferior quality and several anti-trust lawsuits.
+
+The web industry of that time saw four main browser engines entangled on fierce competition, forcing companies to try to outpace their competitors, and even setting up the foundations for new web-standards to be born and submitted to W3C.
+
+Chrome then comes in. Firefox and IE both lose a massive user-base, Chrome open-sources parts of it's core, and absurdly grows in user adoption.
+
+Enter the scene we have nowadays; a plethora of Chrome-like browsers (Brave, Edge, Opera, Vivaldi) running the scene along with Chrome, with few competitors on the ring with them, namely Firefox and Safari. 
+
+Why did a bring this up? Because it's important to understand the circumstances that have lead us to Google's monopoly over the majority of the web and how they have massive say about what practices becomes web-standard in the future.
+
+In [The Ecological Impact of Browser Diversity](https://css-tricks.com/the-ecological-impact-of-browser-diversity/), Rachel Nabors points to the fact that having that massive user base under your flag is a major competitive advantage:
+
+<Quote>
+
+"Chrome has the most resources and leads the pack in building the Web forward to the point that we can’t be sure if we’re building the Web we want… or the Web Google wants."
+
+</Quote>
+
+With a single browser engine being used by the majority of users we are developing for, it's easy to feel that we don't have the obligation to support other audiences, or end up hyper-focusing on the idea that we're "trying to build a better web" with the streamlining of web engine diversity, while further contributing to corporate monopoly.
+
+# Swift winds of competition
+
+If you think about it, IE6 was great when it first came out on 2001, being performant enough to handle DOM manipulation, data-binding and asynchronous JavaScript. The main reason its market share declined over the years was that they didn't care to keep building on top of it, focusing on other fronts instead. As a consequence, Firefox started taking over.
+
+Competition in this context is not about crushing the competitor. It's about sparking innovation. The lack of competition creates stagnated markets where the king-of-the-hill is comfortable enough with not pushing the bar further. 
+
+The cycle repeats itself, and Google monopolizes the web environment the same way IE did a decade ago. 
+
+As I'm writing this, data from [StatCounter](https://gs.statcounter.com/) shows that Chrome alone holds 65.89% of the browser market share across the globe.  
+
+# Browser diversity decadence
+
+Opera and Edge went to Chromium. Firefox — which has always been a breath away from disappearing but somehow managed to survive until now — has been hit with the massive layoff from teams that covered MDN and the Servo engine. Many of the bold take-ups on different browser finalities (Vivaldi with its customization, Brave with privacy, and so on) are running the Chromium open-sourced project.
+
+As more and more users gravitate towards this ecosystem, modern development cycles are no longer obligated to make cross-browsing support a leading priority. Chrome enjoys the benefit of having the majority of the web development community building and testing for their platform. 
+
+As developers, we could make the point that this is actually a good thing. Cross-compatibility issues are a major problem for the development experience, and the more we streamline the ecosystem we develop for, the better will be our development experience.
+
+But in the other side of that coin, if we are truly moving to get a single browser engine powering the entirety of the web, are we really prepared to let Google have the ultimate say over what are the web-standards (more then what they already have with SEO and ads)?
+
+# Going forward into the future
+
+Tech — like most things in the world — is somewhat unpredictable, and I'm not the one who's gonna go forward to spit hot takes on what is going to happen with the future of the web. A decade is all it took to change the status-quo of this entire industry and it will most likely happen again and again, for better or for worse.
+
+But concerns such as the ever growing lack of privacy, fractured and unperformant browser engines and corporate monopolisation over something as important and fundamental to the experience of using tech as browsers are can spark a lot of discourse. 
+
+One of the most interesting takes I've seen when we start talking about alternatives that could help decentralize the corporate hold of browsers is moving much of the responsibilities from the browser to the web application itself, as discussed in this [very interesting talk](https://www.youtube.com/watch?v=1uflg7LDmzI) given by James Mickens on 2015's Harvard CS Colloquium. 
+
+He argues that modern browsers make it difficult to create fast, secure and robust web pages because of their bad abstractions, which developers have no control over whatsoever.

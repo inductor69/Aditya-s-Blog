@@ -1,0 +1,377 @@
+---
+title: How I developed this website with Gatsby
+description: Building a blog was never such a pleasant experience
+date: 2020-07-08 
+featured: https://res.cloudinary.com/ernestoresende/image/upload/v1603304966/og%20cards/How_I_developed_this_site_with_Gatsby-min_qplmf5.jpg
+---
+
+As I began to delve deeper and started to write about some of my experiences with web development, the desire to have my own little space to blog about the stuff I enjoyed rose to the surface. I had already published some small tutorials on *dev.to* and *Medium* before, but never went as deep as having my own platform and talking about more diverse topics.
+
+As we reached the middle of 2020, the god-forsaken pandemic had already caused a massive havoc in the world and essentially shut down any chances of me going to college for the rest of the year. Stuck at home with the rest of the world, this was the opportunity for me to get some grasp at personal projects that were in my head.
+
+Along with that came the decision to build a new website from the ground-up and have it be a place where I could centralize all the content I produced under my personal brand. I researched some of the blogs I enjoyed, spent some weeks on back-and-forth between some design choices and what would I ship in a MVP, and decided on a stack where I would build it.
+
+# Coming up with a new layout
+
+First thing's first, I had to come up with a new layout for the thing. I went trough some iterations of what I wanted, spending a long time in the borders of the "I want it to feel like you're reading a newspaper", something like [Piccalilli](https://piccalil.li) for example. That was ultimately scratched, in favor of something with a more modern looking flavor. By the end of April, I had something like this:
+
+<BlogImages 
+  webpLink="https://res.cloudinary.com/ernestoresende/image/upload/v1596583032/how-i-developed-this-website-with-gatsby/Screen-Shot-2020-08-04-at-11.58.04_fpag4c.webp"
+  jpegLink="https://res.cloudinary.com/ernestoresende/image/upload/v1596583032/how-i-developed-this-website-with-gatsby/Screen-Shot-2020-08-04-at-11.58.04_fpag4c.jpeg"
+  alt="Layout from this website."
+/>
+
+A slick modern UI with saturated highlights on main elements. Design done; time for the development.
+
+
+# Why Gatsby?
+
+<Quote>
+
+"It's funny how many people out there will go over the trouble of putting together a Gatsby or Next.js site to end up having a landing page and two posts."  — Someone on Twitter, probably.
+
+</Quote>
+
+That's actually fair. Opting for Gatsby to bootstrap simple presentational content is massive over-engineering in <em>my humble opinion</em>, and even if you mean to optimize your development process with a static site generator, there are more [simple ways of doing that](https://www.11ty.dev). But, even though I have few posts here as of now, I obviously intend to have much more in the future. That's where some of Gatsby advantages (or Static Site Generation as a whole) comes into play. I'm cutting out on many of the headaches that may arise in the future. Let me take the time to delve deeper into such advantages: 
+
+## Incremental Builds
+
+To understand incremental builds, we first need to understand how Gatsby builds our website.
+
+Gatsby is, essentially, a wrapper around React. That means that you build Gatsby websites using the same stuff you use to build React components. The main difference is that pure React will have it's content generated dinamically by the server on each client request. With Gatsby, the HTML from the webpage is pre-generated at build time and served already baked to the client. 
+
+By understanding this, you can already see why static sites are a good idea for blogs; the content of a blog is not dynamic! It is not like this post is going to show different content to different users. Every client will load exactly the same thing. 
+
+So, where does incremental builds come into play?
+
+As per convention the "build" process is the convoluted part of the whole static site shennanigans. During the build process, Gatsby will make all the API calls needed to fetch the data you requested and generate every possible HTML page. Fundamentally, the bigger your website gets, the longer the build time will be. 
+
+Incremental builds seeks to solve that problem by rebuilding only the tweaks you made to the content from one build to another, not the entire goddam thing. Instead of spending minutes rebuilding the thousands of pages in your webpage, you rebuild only what you've changed. 
+
+<InformationSidenote title="Is Markdown a code change, or data change?">
+  <p className='last-line'>As of now, the fastest builds will be with those using CMSs that support incremental updates as Gatsby Cloud can then leverage the site’s local build cache. Incremental Builds currently only support data changes, and Markdown counts as a code change; it will trigger an entire re-build. Gatsby team is still working on making incremental builds available to code changes in the future.</p>
+</InformationSidenote>
+
+## Plugins, plugins everywhere!
+
+Gatsby is blessed with an enormous amount of plugins that deal with many commons hassles like SEO, data sourcing and responsive/optimized image delivery. The whole plugin ecosystem makes the development process very modular, extremely customizable, and really bump the development experience. 
+
+Here are some of the plugins that went into the building of this site for example:
+
+- <em>gatsby-source-filesystem</em> - Allows me to source content that sits inside the filesystem (Markdown files that make up the blog posts on my case).
+- <em>gatsby-plugin-mdx</em> - Responsible for parsing through the Markdown files and making them into HTML that the browser can understand.
+- <em>gatsby-remark-prismjs</em> - Handles the syntax highlighting for code snippets.
+
+## SEO and Performance
+
+By default, the fact that we are dealing with a static site means that we are very on pair with best SEO practices, and taking advantage of a lot of performance shenanigans that come baked with the concept. Gatsby takes it one step further by automatically doing code-splitting, minifying and packaging on the build process. 
+
+Keep in mind this is not exclusive to Gatsby. Next.js and pretty much any other respectable static site generator is suposed to work like this. It's not a plus, it's a must.
+
+If all of this got you interested in some degree, you can check the [Gatsby Conceptual Guide](https://www.gatsbyjs.org/docs/conceptual-guide/) on their official webpage and learn more in-depth details about the development and build process used when building Gatsby applications.
+
+<hr></hr>
+
+# Under the hood
+
+I quickly glanced over some of my design decisions and advantages of using a static site generator like Gatsby to build it. Now it's time to explore some of the components and concepts that make up this website.
+
+<WarningSidenote title="Intended audience">
+  <p className='last-line'>This section assumes some previous experience with core principles of React development.</p>
+</WarningSidenote>
+
+Starting with a high-scope view of the thing, here is a list of relevant technologies I'm using as of now:
+
+- <em>GraphQL</em> - This fella is the one responsible for sourcing content and presenting structured data. If we write a query like this:
+  
+```graphql
+  query MyQuery {
+  site {
+    siteMetadata {
+      title
+      description
+    }
+  }
+}
+```
+
+It will return the data stored inside Gatsby configuration file:
+
+```graphql
+{
+  "data": {
+    "site": {
+      "siteMetadata": {
+        "title": "Ernesto Resende",
+        "description": "UI Designer and Front-End Developer. Blogs about design, development and tech stuff."
+      }
+    }
+  }
+}
+```
+
+Now we can source and use that data to populate SEO components for example.
+
+- <em>MDX</em> - MDX is basically Markdown, but with acess to our custom React Components. Since it accepts the same sub-plugins from Remark, I'm taking advantage of a full plethora of gatsby-remark "sub-plugins".
+- <em>Styled Components</em> - CSS-in-JS library. The name says everything; it creates named components that you can style with CSS directly inside your JavaScript file. You will end up seeing a structure similar to this:
+
+```jsx
+const Title = styled.h1 `
+  font-size: 36px;
+`
+
+export default function Header () {
+  return (
+    <Title>This is a title</Title>
+  )
+}
+```
+
+- <em>Gatsby Cloud</em> - I have to admit, I'm not a fan of how Gatsby pushes us to their cloud service and walls the hosting enviroment for Gatsby projects. Unfortunatelly, the incremental builds are closely coupled with their cloud solution. 
+
+If we were to get a high-scope view of the thing, the structure this site uses is mostly the same we get recommended by Gatsby with their documentation.
+
+```bash
+├── LICENSE
+├── README.md
+├── gatsby-browser.js
+├── gatsby-config.js
+├── gatsby-node.js
+├── gatsby-ssr.js
+├── package.json
+├── src
+│   ├── components
+│   ├── content
+│   │   └── posts
+│   ├── icons
+│   ├── pages
+│   ├── styles
+│   │   ├── GlobalStyles.js
+│   │   ├── PrismStyles.js
+│   │   ├── media.js
+│   │   ├── mixins.js
+│   │   └── theme.js
+│   └── templates
+│       ├── BlogList.js
+│       └── BlogPost.js
+├── static
+├── webpack-alias.js
+└── yarn.lock
+```
+
+All the components, pages, templates and stylesheets sits under the `src` directory. The Markdown files are also there on my case, but there is no rule telling you that you can't put them somewhere else, it's just my personal preference.
+
+Speaking of Markdown, remember the GraphQL used to query for site metadata? The same approach is used to source Markdown files from the filesystem. With the plugins `gatsby-source-filesystem` and `gatsby-plugin-mdx`, they can be sourced with a simple query that returns all the data from the frontmatter, along with the document body.
+
+## Styling with Styled Components
+
+With styled-components, styling rules sit right next to their JSX elements in the same document (separating the component in a document file and style file also works, but having everything in one file looks cleaner to me, as long as the styles there belong to the same component.
+
+A regular component can end up looking like this:
+
+```jsx
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
+import HeroMask from '@icons/HeroMask';
+
+import media from '@styles/media'
+import mixins from '@styles/mixins';
+
+const MainContainer = styled.div `
+  height: 350px;
+  background: var(--color-gradients);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  ${media.tablet`height: 400px;`};
+`;
+const HeaderWrapper = styled.div `
+  padding-top: 36px;
+  ${mixins.sidePadding}
+  ${mixins.desktopAlignCenter}
+`;
+const HeaderMaskWrapper = styled.div `
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 3;
+  bottom: -20px;
+`;
+
+const BlogHeader = ({ children }) => {
+  return (
+    <MainContainer>
+        <HeaderWrapper>
+          {children}
+        </HeaderWrapper>
+        <HeaderMaskWrapper>
+          <HeroMask />
+        </HeaderMaskWrapper>
+    </MainContainer>
+  )
+}
+
+export default BlogHeader;
+```
+
+<InformationSidenote title="Webpack aliases">
+  
+  <p>
+  You can use aliases instead of the absolute path when working with webpack imports. Set up a file for webpack aliases in the root of your project. After that, use the require method in the gatsby-config file, also located at the root of your Gatsby project.
+  </p>
+
+  On `webpack-aliases.js`:
+
+  ```js
+const path = require('path');
+
+module.exports = {
+  '@components': path.resolve(__dirname, 'src/components'),
+  '@pages': path.resolve(__dirname, 'src/pages'),
+  '@styles': path.resolve(__dirname, 'src/styles'),
+  '@icons' : path.resolve(__dirname, 'src/icons'),
+  '@fonts' : path.resolve(__dirname, 'src/fonts')
+};
+  ```
+
+  And on `gatsby-config.js`:
+  
+  ```js
+  module.exports = {
+    plugins: [
+      {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias,
+        extensions: [],
+      }
+    },
+    ]
+  }
+  ```
+
+</InformationSidenote>
+
+You may be asking what are these `media` and `mixins` imports.
+
+The mixins store CSS properties that are frequently repeated in various components, like aligning a whole container to the center for example.
+
+Inside `mixins.js`:
+
+```jsx
+import { css } from 'styled-components';
+
+const mixins = {
+  desktopAlignCenter: css`
+    margin: 0 auto;
+    width: 100%;
+    right: 0px;
+    left: 0px;
+    max-width: 1100px;
+  `,
+};
+
+export default mixins;
+```
+
+That mixin can then be called in a component like:
+
+```jsx
+import mixins from '@styles/mixins;
+
+const Main = styled.div `
+  ${mixins.desktopAlignCenter};
+`
+```
+
+As for the `@media` imports, this is a little trick that I've found while looking into [Brittany Chiang's website](https://brittanychiang.com) (full-credits on this snnipet to her, I couldn't come up with this on my own in a million years). In the `media.js` file, the media query template can be written like this:
+
+```jsx
+import { css } from 'styled-components'
+
+const sizes = {
+  giant: 1440,
+  bigDesktop: 1200,
+  desktop: 1000,
+  tablet: 768,
+  thone: 600,
+  phablet: 480,
+  phone: 376,
+  tiny: 330,
+}
+
+/* Iterate through the sizes and creates a media query template */
+export const media = Object.keys(sizes).reduce((accumulator, label) => {
+  /* Use "em" units in breakpoints to work properly cross-browser and support users changing their browsers font-size. */
+  const emSize = sizes[label] / 16
+  accumulator[label] = (...args) => css`
+    @media (max-width: ${emSize}em) {
+      ${css(...args)};
+    }
+  `
+  return accumulator
+}, {})
+
+export default media
+
+```
+
+And then used on a component like this:
+
+```jsx
+const MainContainer = styled.div `
+  ${media.tablet`height: 400px;`};
+`;
+```
+
+For global styles that are reused across the entire project, styled-components provides the `createGlobalStyles` API. They are used on a `GlobalStyles.js` file that sits on the `styles` directory.
+
+```jsx
+import { createGlobalStyle } from 'styled-components';
+
+// Global Body Styles
+const GlobalStyle = createGlobalStyle`
+    body {
+      font-family: ${fonts.Jost};
+      font-size: ${fontSizes.xs};
+      color: var(--color-text);
+      text-rendering: optimizeLegibility;
+      background: var(--color-background);
+    }
+`
+```
+
+# Managing post content
+
+Usually content management befalls to a CMS, but I like the workflow of writing content from my editor. So what do I do to manage the chaos?
+
+Well, I use **Notion**. It is a note-taking application that uses a Rich-Text editor. The management system and articles that are yet under construction stay there until the final draft, where I export the Markdown file and make the final adjustments.
+
+<BlogImages 
+  webpLink="https://res.cloudinary.com/ernestoresende/image/upload/v1596583032/how-i-developed-this-website-with-gatsby/Screen-Shot-2020-08-04-at-20.10.42_hdrrnk.webp"
+  jpegLink="https://res.cloudinary.com/ernestoresende/image/upload/v1596583032/how-i-developed-this-website-with-gatsby/Screen-Shot-2020-08-04-at-20.10.42_hdrrnk.jpeg"
+  alt="Writing this very same post on Notion"
+  figcaption="Writing this very same post on Notion."
+/>
+
+# Hosting with Gatsby Cloud and Netlify
+
+Outside of the front-end development part, there is very little I need to in order to get it running on Gatsby Cloud. Their service is very straight forward; chose a Github repo and a branch where it will pull the site from and a new build will be trigered each time you commit to that branch. It also integrates beautifully with Netlify, which I use for hosting.
+
+<BlogImages 
+  webpLink="https://res.cloudinary.com/ernestoresende/image/upload/v1602394468/how-i-developed-this-website-with-gatsby/gatsby-cloud-interface_tovphb.webp"
+  jpegLink="https://res.cloudinary.com/ernestoresende/image/upload/v1602394468/how-i-developed-this-website-with-gatsby/gatsby-cloud-interface_tovphb.jpeg"
+  alt="Gatsby Cloud's build management interface"
+  figcaption="Gatsby Cloud's build management interface."
+/>
+
+Netlify also offers a CMS service for those interested, but as stated before, given the diverse nature of components I inject into my MDX files, I still prefer to manage it by hand.
+
+# Wrapping up
+
+Developing this was a fun exercise of "It didn't end up like I envisioned in my head for the first time but I liked it better". And although I abhor the term "digital garden" with every molecule of my body, this is essentially how I want to treat my little slice of the web from now on; progressive growth and content development that doesn't get stale after a week passes by. That means I'm very much open to suggestions for changes and additions in the future. 
+
+As for a newsletter, I aim to get one up and running as soon as I have a more well defined routine for posting content.
