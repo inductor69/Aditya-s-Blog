@@ -1,5 +1,4 @@
 const alias = require('./webpack-alias')
-const queries = require('./src/utils/algolia');
 
 require('dotenv').config();
 
@@ -25,16 +24,7 @@ module.exports = {
         extensions: [],
       },
     },
-    {
-      resolve: `gatsby-plugin-algolia`,
-      options: {
-        appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.GATSBY_ALGOLIA_ADMIN_KEY,
-        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME, // for all queries
-        queries,
-        chunkSize: 10000, // default: 1000
-      },
-    },
+  
 
     {
       resolve: 'gatsby-plugin-manifest',

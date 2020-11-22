@@ -32,15 +32,15 @@ export const COLORS = {
   /* Background for page and page components (cards, heros, navigation, etc.) */
   background: {
     light: 'rgb(247, 247, 247)', // Very bright tone of gray.
-    dark: 'rgb(14, 20, 27)', // Very dark tone of blue.
+    dark: '#25293A', //  tone of blue.
   },
   gradients: {
     light: 'rgb(225, 241, 250)',
-    dark: 'rgb(18, 26, 36)',
+    dark: '#1f2230',
   },
   cards: {
     light: 'rgba(191, 222, 242, 0.50)', // Same color as Light Mode Typography.
-    dark: 'rgb(18, 26, 36)', // One tone brighter then dark mode background.
+    dark: '#242839', // One tone brighter then dark mode background.
   },
   workCards: {
     light: 'rgba(255, 255, 255)', // Same color as Light Mode Typography.
@@ -64,11 +64,11 @@ export const COLORS = {
   },
   footer: {
     light: 'rgb(225, 241, 250)',
-    dark: 'rgb(18, 26, 36)',
+    dark: '#1f2230',
   },
   navBackground: {
     light: 'rgb(225, 241, 250)',
-    dark: 'rgb(18, 26, 36)',
+    dark: '#1f2230',
   },
   toggleBorder: {
     light: 'rgb(33, 35, 44)',

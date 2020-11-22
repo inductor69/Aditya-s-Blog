@@ -8,7 +8,6 @@ import SEO from '@components/Seo'
 import Layout from '@components/Layout'
 import SmallHero from '@components/SmallHero'
 import BlogItem from '@components/BlogItem'
-import Search from '../components/Search';
 
 const Main = styled.div`
   padding-top: 60px;
@@ -53,7 +52,6 @@ class BlogIndex extends React.Component {
         />
         <Layout>
           <SmallHero />
-          <Search indexName="Posts"></Search>
 
           <Main>
             <div>

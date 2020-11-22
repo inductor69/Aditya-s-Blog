@@ -3,7 +3,6 @@ import theme from '@styles/theme'
 import media from '@styles/media'
 import 'prism-material-themes/themes/material-default.css';
 
-const { fonts } = theme
 
 const PrismStyles = css`
   code[class*='language-'],
@@ -15,9 +14,8 @@ const PrismStyles = css`
     -moz-tab-size: 2;
     tab-size: 2;
     hyphens: none;
-    font-family: ${fonts.JetBrainsMono};
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 400;
     overflow-x: auto !important;
     border-radius: 0;
     line-height: 1.7;
@@ -35,7 +33,7 @@ const PrismStyles = css`
   
   :not(pre) > code[class*="language-"],
   pre[class*="language-"] {
-	background: #292d3e;
+	background: #1f2230;
   }
   
   :not(pre) > code[class*="language-"] {
