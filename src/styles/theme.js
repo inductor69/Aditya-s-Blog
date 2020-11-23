@@ -1,8 +1,8 @@
 const theme = {
   fonts: {
     // Body Content Fontface
-    Futura:
-      'Futura, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Helvetica Neue, Segoe UI, Arial, sans-serif',
+    ProductSans:
+      'ProductSans, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Helvetica Neue, Segoe UI, Arial, sans-serif',
 
     // Styled Content Fontface
     Sriracha:

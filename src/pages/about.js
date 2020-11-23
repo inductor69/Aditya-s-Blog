@@ -79,7 +79,7 @@ const About = () => {
 
           <div>
             <ImageContainer>
-              <img src="https://res.cloudinary.com/ernestoresende/image/upload/v1598847957/work/about_me_picture_bkosm1.jpeg" alt="Myself"/>
+              <img src="https:///res-console.cloudinary.com/inductor/thumbnails/transform/v1/image/upload//v1606114396/SU1HXzAyNjNfc254dG45/drilldown" alt="Myself"/>
             </ImageContainer>
           </div>
 

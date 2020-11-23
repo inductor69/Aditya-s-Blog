@@ -18,7 +18,7 @@ export const PostContainer = styled(props => <GatsbyLink {...props} />)`
     line-height: 31px;
     letter-spacing: -0.1rem;
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--color-titleText);
     transition: all ease-in-out 0.1s;
   }
 

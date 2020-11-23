@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
   button {
-    font-family: ${fonts.Futura};
+    font-family: ${fonts.ProductSans};
     background: none;
     border: 0;
     padding: 0;
@@ -72,7 +72,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 700;
   }
   input {
-    font-family: ${fonts.Futura};
+    font-family: ${fonts.ProductSans};
   }
   input[type="search"] {
     -webkit-appearance: textfield;
@@ -108,7 +108,7 @@ const GlobalStyle = createGlobalStyle`
   /* Global Body Styles */
   /* -------------------- */
     body {
-      font-family: ${fonts.Futura};
+      font-family: ${fonts.ProductSans};
       font-weight: 400;
       letter-spacing: 0.02rem;
       font-size: ${fontSizes.xs};
