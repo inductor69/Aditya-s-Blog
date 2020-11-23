@@ -2,7 +2,7 @@ export const COLORS = {
   /* Typography, highlight and links */
   text: {
     light: 'rgb(33, 35, 44)', // Near black with a tone of blue.
-    dark: '#b6c3fc', // White with a bit of transparency
+    dark: '#b6c3fc ', // White with a bit of transparency
   },
   secondaryText: {
     light: 'rgb(63, 72, 82)', // Dark gray with a light blue tone.
