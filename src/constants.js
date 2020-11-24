@@ -36,11 +36,11 @@ export const COLORS = {
   /* Background for page and page components (cards, heros, navigation, etc.) */
   background: {
     light: 'rgb(247, 247, 247)', // Very bright tone of gray.
-    dark: '#25293A', //  tone of blue.
+    dark: '#151719', //  tone of blue.
   },
   gradients: {
     light: 'rgb(225, 241, 250)',
-    dark: '#1f2230',
+    dark: '#1a1a2e',
   },
   cards: {
     light: 'rgba(191, 222, 242, 0.50)', // Same color as Light Mode Typography.
@@ -68,11 +68,11 @@ export const COLORS = {
   },
   footer: {
     light: 'rgb(225, 241, 250)',
-    dark: '#1f2230',
+    dark: '#1a1a2e',
   },
   navBackground: {
     light: 'rgb(225, 241, 250)',
-    dark: '#1f2230',
+    dark: '#1a1a2e',
   },
   toggleBorder: {
     light: 'rgb(33, 35, 44)',

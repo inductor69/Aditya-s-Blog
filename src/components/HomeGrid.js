@@ -20,7 +20,7 @@ const Main = styled.div`
   ${media.desktop`display: block`}
 `
 const ProjectsHeader = styled.div`
-  padding-top: 128px;
+  padding-top: 20px;
   ${mixins.desktopAlignCenter}
   ${mixins.sidePadding}
 `

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import media from '@styles/media'
 
 const MainWrapper = styled.div`
-  padding: 0 0 50px;
+  padding: 0 0 10px;
 `
 const TextWrapper = styled.div`
   .card-header-wrapper {

@@ -68,10 +68,10 @@ const About = () => {
             pathname="/about"
           />
           <AboutText>
-            <p>Hello, I'm Aditya K., a UI Designer and Front-End Developer based on Brazil.</p>
-            <p>I enjoy working with and contributing to stuff that lives on the web, be it by designing or developing it. Presentational content, web-apps, stores or weird conceptual projects, it doesn't matter. If it lives in the web, I'm interested on building it.</p>
-            <p>I'm currently majoring in Graphic Design at the <a href="http://en.ufs.br/pagina/21114">Federal University of Sergipe</a>, and take some freelance work on my spare time, while also trying to learn new stuff that adds value to both to my coding skills and industry awareness.</p>
-            <p className="last-line">When I'm not busy with work, I'm all about playing some RPGs or reading some novels (I'm a big fan of all sorts of medieval fantasy stuff and weird sci-fi stuff). I'm not so keen at sports, but I'm trying to take long walks more frequently to keep my health and mind in a good place.</p>
+            <p>Hello, I'm Aditya K., a UI Designer and Full-Stack Developer.</p>
+            <p>I'm Sophomore at IIT Delhi pursuing a Major degree in Production and Industrial Engineering in the Mechanical department.</p>
+            <p>My main tech stack is Native Android Development, Flutter Framework, TypeScript, NodeJS, MongoDB, Firebase, GraphQL, and ReactJS.
+I'm in the early days of my journey to become a successful entrepreneur and Java and Python are my go-to for building everything, but I really like JS and it dominates most of my daily work now.</p>
             <WhatNext to='/#connect'>What's next?</WhatNext>
 
           </AboutText>
@@ -79,7 +79,7 @@ const About = () => {
 
           <div>
             <ImageContainer>
-              <img src="https:///res-console.cloudinary.com/inductor/thumbnails/transform/v1/image/upload//v1606114396/SU1HXzAyNjNfc254dG45/drilldown" alt="Myself"/>
+              <img src="https:///res-console.cloudinary.com/inductor/thumbnails/transform/v1/image/upload//v1606114396/SU1HXzAyNjNfc254dG45/drilldown" alt="Me"/>
             </ImageContainer>
           </div>
 

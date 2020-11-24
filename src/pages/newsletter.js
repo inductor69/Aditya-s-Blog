@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import MailchimpSubscribe from "react-mailchimp-subscribe"
 import BlogNavigation from '@components/BlogNavigation'
 import NavigationDrawer from '@components/NavigationDrawer'
 import Footer from '@components/Footer'
@@ -10,7 +9,7 @@ import Mailchimp from 'react-mailchimp-form'
 import mixins from '@styles/mixins'
 import media from '@styles/media'
 
-const Main = styled.div `
+const Main = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -21,7 +20,7 @@ const Main = styled.div `
   ${mixins.desktopAlignCenter}
 `
 
-const FormContainer = styled.div `
+const FormContainer = styled.div`
   margin: 0 auto;
   form {
     display: grid;
@@ -47,9 +46,9 @@ const FormContainer = styled.div `
     transition: all 200ms ease-out 0s;
   }
   input::placeholder {
-    
   }
-  input:focus, input.populated {
+  input:focus,
+  input.populated {
     border: solid 1px var(--color-highlights);
     box-shadow: var(--color-formControlBoxShadow);
   }
@@ -71,83 +70,69 @@ const FormContainer = styled.div `
     }
   }
 `
-const url = "https://gmail.us10.list-manage.com/subscribe/post?u=64f44007562ba29666f848b31&amp;id=c571916657";
 
-const NewsletterTitle = styled.h1 `
+const NewsletterTitle = styled.h1`
   font-size: 42px;
   font-weight: 700;
   padding-bottom: 32px;
   ${media.tablet`font-size: 32px;`}
 `
 
-const NewsletterDescription = styled.p `
+const NewsletterDescription = styled.p`
   font-size: 26px;
   padding-bottom: 64px;
   ${media.tablet`font-size: 22px;`}
 `
-const CustomForm = () => (
-  <MailchimpSubscribe
-    url={url}
-    render={({ subscribe, status, message }) => (
-      <div>
-        {status === "sending" && <div style={{ color: "blue" }}>sending...</div>}
-        {status === "error" && <div style={{ color: "red" }} dangerouslySetInnerHTML={{__html: message}}/>}
-        {status === "success" && <div style={{ color: "green" }}>Subscribed !</div>}
-      </div>
-    )}
-  />
-)
+
 const Newsletter = () => {
-  
-  return(
+  return (
     <React.Fragment>
-      <BlogNavigation /> 
-      <SEO title="Newsletter" />
+      <BlogNavigation />
+      <SEO title='Newsletter' />
 
       <Main>
-        <NewsletterTitle>New content directly delivered to your mail.</NewsletterTitle>
-        <NewsletterDescription>Get Latest tech updates. Unsubscribe anytime!</NewsletterDescription>
+        <NewsletterTitle>
+          New content directly delivered to your mail.
+        </NewsletterTitle>
+        <NewsletterDescription>
+          Get Latest tech updates. Unsubscribe anytime!
+        </NewsletterDescription>
 
         <FormContainer>
-        <Mailchimp
-  action='https://gmail.us10.list-manage.com/subscribe/post?u=64f44007562ba29666f848b31&amp;id=c571916657' 
-  
-  //Adding multiple fields:
-  fields={[
-    {
-      name: 'EMAIL',
-      placeholder: 'Email',
-      type: 'email',
-      required: true
-    },
-    {
-      name: 'FNAME',
-      placeholder: 'First Name',
-      type: 'text',
-      required: true
-    }
-  ]}
-  // Change predetermined language
-  messages = {
-    {
-      sending: "Sending...",
-      success: "Thank you for subscribing!",
-      error: "An unexpected internal error has occurred.",
-      empty: "You must write an e-mail.",
-      duplicate: "Too many subscribe attempts for this email address",
-      button: "Subscribe!"
-    }
-  }
-  // Add a personalized class
-  className='<YOUR_CLASSNAME>'
-  />
-            
-        </FormContainer> 
+          <Mailchimp
+            action='https://gmail.us10.list-manage.com/subscribe/post?u=64f44007562ba29666f848b31&amp;id=c571916657'
+            //Adding multiple fields:
+            fields={[
+              {
+                name: 'EMAIL',
+                placeholder: 'Email',
+                type: 'email',
+                required: true,
+              },
+              {
+                name: 'FNAME',
+                placeholder: 'First Name',
+                type: 'text',
+                required: true,
+              },
+            ]}
+            // Change predetermined language
+            messages={{
+              sending: 'Sending...',
+              success: 'Thank you for subscribing!',
+              error: 'An unexpected internal error has occurred.',
+              empty: 'You must write an e-mail.',
+              duplicate: 'Too many subscribe attempts for this email address',
+              button: 'Subscribe!',
+            }}
+            // Add a personalized class
+            className='<YOUR_CLASSNAME>'
+          />
+        </FormContainer>
       </Main>
       <Footer />
       <NavigationDrawer />
-
-    </React.Fragment> 
+    </React.Fragment>
   )
 }
 

@@ -173,7 +173,6 @@ const ProjectSowi = () => {
               <div className="project-desc-item">
                 <h3>Github Repo</h3>
                 <a 
-                  target='_blank' rel='noreferer noopener nofollow' 
                   href="https://github.com/projetosowi/projetosowi.com.br">
                   View Code
                 </a>
