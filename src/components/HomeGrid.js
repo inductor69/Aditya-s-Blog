@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 import SectionCard from '@components/SectionCard'
-import WorkCard from '@components/WorkCard'
 
 import { Link as GatsbyLink, navigate } from 'gatsby'
 
@@ -24,14 +23,7 @@ const ProjectsHeader = styled.div`
   ${mixins.desktopAlignCenter}
   ${mixins.sidePadding}
 `
-const ProjectsGrid = styled.div`
-  ${mixins.desktopAlignCenter}
-  ${mixins.sidePadding}
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 32px;
-  padding-bottom: 128px;
-`
+
 const Recent = styled.h2`
   font-size: 18px;
   font-weight: 600;
@@ -141,26 +133,10 @@ const HomeGrid = ({ children }) => {
       <ProjectsHeader>
         <SectionCard
           title='Case Studies'
-          description="Some of the previous and ongoing work that I'm proud of."
+          description="Some of the Case Studies I worked on."
         />
       </ProjectsHeader>
-      <ProjectsGrid>
-        <WorkCard
-          thumbnail='https://res.cloudinary.com/ernestoresende/image/upload/v1604017158/work/SOWI_Cover_yvhybp.jpg'
-          title='SOWI'
-          description="A content production collective to discusses the culture of entertainment in it's many formats."
-          projectLink='VIEW THE CASE STUDY >'
-          href='/sowi'
-        />
-
-        {/* <WorkCard
-          thumbnail='https://res.cloudinary.com/ernestoresende/image/upload/v1604017328/work/Oracao_Play_Cover_i2cogh.jpg'
-          title='Oração Play'
-          description='A praying and meditation mobile app available for Android and iOS users.'
-          projectLink='VIEW THE CASE STUDY >'
-          href='/oracao-play'
-        /> */}
-      </ProjectsGrid>
+     
 
       <ContactSection id='connect'>
         <SectionCard

@@ -94,7 +94,7 @@ const Footer = () => {
         <FooterRight>
           <StyledLink to='/blog'>Blog</StyledLink>
           <StyledLink to='/about'>About</StyledLink>
-          <StyledLink to='/connect'>Connect</StyledLink>
+          <StyledLink to='/#connect'>Connect</StyledLink>
         </FooterRight>
       </FooterWrapper>
     </MainContainer>
