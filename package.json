@@ -58,7 +58,7 @@
     "react-tsparticles": "^1.17.0",
     "remark-slug": "^6.0.0",
     "styled-components": "^5.2.1",
-    "terser": "^4.8.0"
+    "terser": "5.7.0"
   },
   "devDependencies": {
     "prettier": "2.1.2"
