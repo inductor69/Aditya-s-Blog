@@ -55,7 +55,7 @@
     "react-mailchimp-form": "^1.0.2",
     "react-mailchimp-subscribe": "^2.1.0",
     "react-reveal": "^1.2.2",
-    "react-tsparticles": "^1.17.0",
+    "react-tsparticles": "1.28.0",
     "remark-slug": "^6.0.0",
     "styled-components": "^5.2.1",
     "terser": "^4.8.0"
